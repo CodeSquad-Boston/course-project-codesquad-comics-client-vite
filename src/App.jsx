@@ -11,6 +11,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Update from "./components/Update";
 
+import "./App.css";
+
 function App() {
   const [user, setUser] = useState(localStorage.getItem("user") || {});
 
