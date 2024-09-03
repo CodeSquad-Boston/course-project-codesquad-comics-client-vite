@@ -1,31 +1,15 @@
-import { useNavigate } from "react-router-dom";
-
 const Create = () => {
-  const navigate = useNavigate();
-
   const handleCreateFormSubmit = (e) => {
     e.preventDefault();
+    console.log("Create form submitted!");
 
-    const body = {
-      title: e.target.title.value,
-      author: e.target.author.value,
-      publisher: e.target.publisher.value,
-      genre: e.target.genre.value,
-      pages: e.target.pages.value,
-      rating: e.target.rating.value,
-      synopsis: e.target.synopsis.value,
-    };
-
-    fetch(`http://localhost:8080/api/books/create`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        navigate(`/admin`);
-      })
-      .catch((error) => console.log("error :>> ", error));
+    console.log(e.target.title.value);
+    console.log(e.target.author.value);
+    console.log(e.target.publisher.value);
+    console.log(e.target.genre.value);
+    console.log(e.target.pages.value);
+    console.log(e.target.rating.value);
+    console.log(e.target.synopsis.value);
   };
 
   return (

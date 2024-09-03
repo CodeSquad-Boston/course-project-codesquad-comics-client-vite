@@ -1,46 +1,28 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+
+import booksData from "../data/books";
 
 const Update = () => {
-  const { bookId } = useParams();
-  const navigate = useNavigate();
-
+  const id = "66b62a49-a8de-4914-ab3f-49fe0554c08a";
   const [book, setBook] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/books/${bookId}`)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("result :>> ", result);
-        setBook(result.data);
-        navigate("/admin");
-      })
-      .catch((error) => console.log("error :>> ", error));
-  }, [bookId, navigate]);
+    const foundBook = booksData.find((book) => book._id === id);
+    setBook(foundBook);
+  }, [id]);
 
   const handleUpdateFormSubmit = (e) => {
     e.preventDefault();
 
-    const body = {
-      title: e.target.title.value,
-      author: e.target.author.value,
-      publisher: e.target.publisher.value,
-      genre: e.target.genre.value,
-      pages: e.target.pages.value,
-      rating: e.target.rating.value,
-      synopsis: e.target.synopsis.value,
-    };
+    console.log("Update form submitted!");
 
-    fetch(`http://localhost:8080/api/books/update/${bookId}`, {
-      method: "PUT",
-      body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("result :>> ", result);
-        navigate("/admin");
-      })
-      .catch((error) => console.log("error :>> ", error));
+    console.log(e.target.title.value);
+    console.log(e.target.author.value);
+    console.log(e.target.publisher.value);
+    console.log(e.target.genre.value);
+    console.log(e.target.pages.value);
+    console.log(e.target.rating.value);
+    console.log(e.target.synopsis.value);
   };
 
   return (

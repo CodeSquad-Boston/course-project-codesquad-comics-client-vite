@@ -1,28 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-// import booksData from "../data/books";
+import booksData from "../data/books";
 
 const Admin = () => {
   const [books, setBooks] = useState([]);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    fetch("http://localhost:8080/api/books")
-      .then((response) => response.json())
-      .then((result) => setBooks(result.data))
-      .catch((error) => console.log("error :>> ", error));
+    setBooks(booksData);
   }, []);
-
-  const handleDeleteBook = (bookId) => {
-    fetch(`http://localhost:8080/api/books/delete/${bookId}`, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((result) => console.log("result :>> ", result))
-      .catch((error) => console.log("error :>> ", error));
-  };
 
   return (
     <div className="container-content">
@@ -47,20 +32,10 @@ const Admin = () => {
               <td>{book.author}</td>
               <td>{book.rating}</td>
               <td>
-                <button
-                  className="button-blue"
-                  onClick={() => navigate(`/books/${book._id}/update`)}
-                >
-                  UPDATE
-                </button>
+                <button className="button-blue">UPDATE</button>
               </td>
               <td>
-                <button
-                  className="button-yellow"
-                  onClick={() => handleDeleteBook(book._id)}
-                >
-                  DELETE
-                </button>
+                <button className="button-yellow">DELETE</button>
               </td>
             </tr>
           ))}

@@ -1,34 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 
-const Signup = ({ setUser }) => {
-  const navigate = useNavigate();
-
+const Signup = () => {
   const handleSignupFormSubmit = (e) => {
     e.preventDefault();
 
-    const body = {
-      firstName: e.target.firstName.value,
-      lastName: e.target.lastName.value,
-      username: e.target.username.value,
-      password: e.target.password.value,
-    };
+    console.log("Signup form submitted!");
 
-    console.log("body :>> ", JSON.stringify(body));
-
-    fetch(`http://localhost:8080/signup`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("result :>> ", result);
-        localStorage.setItem("user", JSON.stringify(result.data));
-        setUser(result.data);
-        navigate("/admin");
-      })
-      .catch();
+    console.log(e.target.firstName.value);
+    console.log(e.target.lastName.value);
+    console.log(e.target.userName.value);
+    console.log(e.target.password.value);
   };
 
   return (
@@ -55,10 +36,6 @@ const Signup = ({ setUser }) => {
       </form>
     </React.Fragment>
   );
-};
-
-Signup.propTypes = {
-  setUser: PropTypes.func.isRequired,
 };
 
 export default Signup;

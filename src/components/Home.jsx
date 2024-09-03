@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 
-// import booksData from "../data/books";
+import booksData from "../data/books";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/books")
-      .then((response) => response.json())
-      .then((result) => setBooks(result.data))
-      .catch((error) => console.log("error :>> ", error));
+    setBooks(booksData);
   }, []);
 
   return (

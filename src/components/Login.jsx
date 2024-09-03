@@ -1,29 +1,11 @@
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-
-const Login = ({ setUser }) => {
-  const navigate = useNavigate();
-
+const Login = () => {
   const handleLoginFormSubmit = (e) => {
     e.preventDefault();
 
-    const body = {
-      username: e.target.username.value,
-      password: e.target.password.value,
-    };
+    console.log("Login form submitted!");
 
-    fetch(`http://localhost:8080/login/local`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("result :>> ", result);
-        localStorage.setItem("user", JSON.stringify(result.data));
-        setUser(result.data);
-        navigate("/admin");
-      })
-      .catch((error) => console.log("error :>> ", error));
+    console.log(e.target.username.value);
+    console.log(e.target.password.value);
   };
 
   return (
@@ -56,10 +38,6 @@ const Login = ({ setUser }) => {
       </div>
     </div>
   );
-};
-
-Login.propTypes = {
-  setUser: PropTypes.func.isRequired,
 };
 
 export default Login;
