@@ -4,14 +4,26 @@ const Update = () => {
       <h1>UPDATE PAGE</h1>
       <form action="#">
         <label htmlFor="title">Title:</label>
-        <input type="text" id="title" name="title" value="" required />
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Title"
+          required
+        />
         <br />
         <label htmlFor="author">Author:</label>
-        <input type="text" id="author" name="author" value="" required />
+        <input
+          type="text"
+          id="author"
+          name="author"
+          placeholder="author"
+          required
+        />
         <br />
         <label htmlFor="publisher">Publisher:</label>
-        <select id="publisher" name="publisher" required>
-          <option value="placeholder" disabled selected>
+        <select id="publisher" name="publisher" defaultValue="default" required>
+          <option value="default" disabled>
             Select
           </option>
           <option value="boom-box">BOOM! Box</option>
@@ -27,10 +39,22 @@ const Update = () => {
         </select>
         <br />
         <label htmlFor="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" value="" required />
+        <input
+          type="text"
+          id="genre"
+          name="genre"
+          placeholder="Genre"
+          required
+        />
         <br />
         <label htmlFor="pages">Number of pages:</label>
-        <input type="number" id="pages" name="pages" value="" required />
+        <input
+          type="number"
+          id="pages"
+          name="pages"
+          placeholder="i.e. 123"
+          required
+        />
         <br />
         <label htmlFor="rating">Rating:</label>
         <input
@@ -39,7 +63,7 @@ const Update = () => {
           name="rating"
           min="0"
           max="5"
-          value=""
+          placeholder="i.e. 5"
           required
         />
         <br />
@@ -48,6 +72,7 @@ const Update = () => {
           className="text-area-label"
           name="synopsis"
           id="synopsis"
+          placeholder="Synopsis"
           required
         ></textarea>
         <br />
