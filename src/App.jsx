@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Navbar from "./shared/Header";
+import Header from "./shared/Header";
 import Footer from "./shared/Footer";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar user={user} setUser={setUser} />
+      <Header user={user} setUser={setUser} />
       <Home />
       <About />
       <Admin />
