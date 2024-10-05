@@ -27,33 +27,31 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div className="container-content">
-      <div className="form-container">
-        <h1>LOGIN PAGE</h1>
-        <form onSubmit={handleLoginFormSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="johnwick"
-            required
-          />
-          <br />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            required
-          />
-          <br />
-          <div className="button-container-center">
-            <input type="submit" className="button-yellow" />
-          </div>
-        </form>
-      </div>
+    <div className="form-container">
+      <h1>LOGIN PAGE</h1>
+      <form onSubmit={handleLoginFormSubmit}>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="johnwick"
+          required
+        />
+        <br />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+        <br />
+        <div className="button-container-center">
+          <input type="submit" className="button-yellow" />
+        </div>
+      </form>
     </div>
   );
 };
