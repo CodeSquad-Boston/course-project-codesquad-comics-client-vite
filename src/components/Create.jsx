@@ -18,6 +18,9 @@ const Create = () => {
 
     fetch(`http://localhost:8080/api/books/create`, {
       method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
       body: JSON.stringify(body),
     })
       .then((response) => response.json())
@@ -52,7 +55,9 @@ const Create = () => {
         <br />
         <label htmlFor="publisher">Publisher:</label>
         <select id="publisher" name="publisher" defaultValue="default" required>
-          <option value="default" disabled>Select</option>
+          <option value="default" disabled>
+            Select
+          </option>
           <option value="boom-box">BOOM! Box</option>
           <option value="dc-comics">DC Comics</option>
           <option value="harry-n-abrams">Harry N. Abrams</option>

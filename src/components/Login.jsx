@@ -12,10 +12,13 @@ const Login = ({ setUser }) => {
       password: e.target.password.value,
     };
 
-    console.log('body :>> ', body);
+    console.log("body :>> ", body);
 
     fetch(`http://localhost:8080/auth/login/local`, {
       method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
       body: JSON.stringify(body),
     })
       .then((response) => response.json())
