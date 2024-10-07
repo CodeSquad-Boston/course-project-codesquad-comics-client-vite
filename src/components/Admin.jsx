@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,7 +23,8 @@ const Admin = () => {
         console.log(result);
         setBooks(result.data.books);
       })
-      .catch((error) => console.log("error :>> ", error));
+      .catch((error) => setError(error.message))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const handleDeleteBook = (bookId) => {
@@ -45,47 +48,59 @@ const Admin = () => {
   return (
     <div className="container-content">
       <h1>ADMIN PAGE</h1>
-      <div className="button-container-center">
-        <button className="button-yellow" onClick={() => navigate("/create")}>
-          ADD NEW COMIC
-        </button>
-      </div>
-      <br /> <br />
-      <table className="table-container">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Rating</th>
-            <th colSpan="2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {books.map((book) => (
-            <tr key={book._id}>
-              <td>{book.title}</td>
-              <td>{book.author}</td>
-              <td>{book.rating}</td>
-              <td>
-                <button
-                  className="button-blue"
-                  onClick={() => navigate(`/books/${book._id}/update`)}
-                >
-                  UPDATE
-                </button>
-              </td>
-              <td>
-                <button
-                  className="button-yellow"
-                  onClick={() => handleDeleteBook(book._id)}
-                >
-                  DELETE
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
+      {isLoading && <p>Loading...</p>}
+
+      {error && <p>There is an error: {error}</p>}
+
+      {!isLoading && !error && (
+        <>
+          <div className="button-container-center">
+            <button
+              className="button-yellow"
+              onClick={() => navigate("/create")}
+            >
+              ADD NEW COMIC
+            </button>
+          </div>
+          <br /> <br />
+          <table className="table-container">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Rating</th>
+                <th colSpan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {books.map((book) => (
+                <tr key={book._id}>
+                  <td>{book.title}</td>
+                  <td>{book.author}</td>
+                  <td>{book.rating}</td>
+                  <td>
+                    <button
+                      className="button-blue"
+                      onClick={() => navigate(`/books/${book._id}/update`)}
+                    >
+                      UPDATE
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className="button-yellow"
+                      onClick={() => handleDeleteBook(book._id)}
+                    >
+                      DELETE
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
     </div>
   );
 };

@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleCreateFormSubmit = (e) => {
@@ -16,6 +19,8 @@ const Create = () => {
       synopsis: e.target.synopsis.value,
     };
 
+    setIsLoading(true);
+
     fetch(`http://localhost:8080/api/books/create`, {
       method: "POST",
       headers: {
@@ -28,7 +33,8 @@ const Create = () => {
         console.log(result);
         navigate(`/admin`);
       })
-      .catch((error) => console.log("error :>> ", error));
+      .catch((error) => console.log("error :>> ", error))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -108,7 +114,9 @@ const Create = () => {
         ></textarea>
         <br />
         <div className="button-container-center">
-          <input type="submit" className="button-yellow" />
+          <button type="submit" className="button-yellow" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "Submit"}
+          </button>
         </div>
       </form>
     </div>

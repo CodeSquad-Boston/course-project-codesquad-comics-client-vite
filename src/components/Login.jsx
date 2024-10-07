@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ setUser }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   const handleLoginFormSubmit = (e) => {
@@ -12,7 +16,7 @@ const Login = ({ setUser }) => {
       password: e.target.password.value,
     };
 
-    console.log("body :>> ", body);
+    setIsLoading(true);
 
     fetch(`http://localhost:8080/auth/login/local`, {
       method: "POST",
@@ -29,7 +33,8 @@ const Login = ({ setUser }) => {
         setUser(result.data.user);
         navigate("/admin");
       })
-      .catch((error) => console.log("error :>> ", error));
+      .catch((error) => setError(error.message))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -55,8 +60,12 @@ const Login = ({ setUser }) => {
         />
         <br />
         <div className="button-container-center">
-          <input type="submit" className="button-yellow" />
+          <button type="submit" className="button-yellow" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
         </div>
+
+        {error && <p>There is an error: {error}</p>}
       </form>
     </div>
   );

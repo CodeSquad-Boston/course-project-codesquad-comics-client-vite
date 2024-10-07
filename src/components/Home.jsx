@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8080/api/books", {
@@ -15,8 +17,9 @@ const Home = () => {
     })
       .then((response) => response.json())
       .then((result) => setBooks(result.data.books))
-      .catch((error) => console.log("error :>> ", error));
-  }, []);
+      .catch((error) => setError(error.message))
+      .finally(() => setIsLoading(false));
+  }, [setIsLoading]);
 
   return (
     <div>
@@ -36,27 +39,36 @@ const Home = () => {
       </div>
       <div className="container-content">
         <h2>COMPLETE COLLECTION</h2>
-        <div
-          className="container-book-rows-index"
-          id="container-book-rows-index"
-        >
-          {books.length &&
-            books.map((book) => (
-              <div key={book._id} className="container-single-book-index">
-                <a href="#">
-                  <img
-                    className="image-cover-index"
-                    src={`images/${book.image}`}
-                    alt={`${book.title} cover`}
-                  />
-                </a>
-                <p>{book.title}</p>
-                <p>by {book.author}</p>
-                <p>{book.rating} stars</p>
-                <a href="#">Details</a>
-              </div>
-            ))}
-        </div>
+
+        {isLoading && <p>Loading...</p>}
+
+        {error && <p>There is an error: {error}</p>}
+
+        {!isLoading && !error && (
+          <>
+            <div
+              className="container-book-rows-index"
+              id="container-book-rows-index"
+            >
+              {books.length &&
+                books.map((book) => (
+                  <div key={book._id} className="container-single-book-index">
+                    <a href="#">
+                      <img
+                        className="image-cover-index"
+                        src={`images/${book.image}`}
+                        alt={`${book.title} cover`}
+                      />
+                    </a>
+                    <p>{book.title}</p>
+                    <p>by {book.author}</p>
+                    <p>{book.rating} stars</p>
+                    <a href="#">Details</a>
+                  </div>
+                ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

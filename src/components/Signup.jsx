@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 const Signup = ({ setUser }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   const handleSignupFormSubmit = (e) => {
@@ -14,6 +17,8 @@ const Signup = ({ setUser }) => {
       username: e.target.username.value,
       password: e.target.password.value,
     };
+
+    setIsLoading(true);
 
     fetch(`http://localhost:8080/auth/signup`, {
       method: "POST",
@@ -29,7 +34,8 @@ const Signup = ({ setUser }) => {
         setUser(result.data.user);
         navigate("/admin");
       })
-      .catch();
+      .catch((error) => setError(error.message))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -76,7 +82,13 @@ const Signup = ({ setUser }) => {
             required
           />
         </div>
-        <button type="submit">Sign up</button>
+        <div>
+          <button type="submit" className="button-yellow" disabled={isLoading}>
+            {isLoading ? "Signing up..." : "Signup"}
+          </button>
+        </div>
+
+        {error && <p>There is an error: {error}</p>}
       </form>
     </React.Fragment>
   );
