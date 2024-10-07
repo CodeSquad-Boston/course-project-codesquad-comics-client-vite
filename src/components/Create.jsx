@@ -58,15 +58,15 @@ const Create = () => {
           <option value="default" disabled>
             Select
           </option>
-          <option value="boom-box">BOOM! Box</option>
-          <option value="dc-comics">DC Comics</option>
-          <option value="harry-n-abrams">Harry N. Abrams</option>
-          <option value="icon-books">Icon Books</option>
-          <option value="image-comics">Image Comics</option>
-          <option value="marvel">Marvel</option>
-          <option value="simon-schuster">Simon & Schuster</option>
-          <option value="top-shelf-productions">Top Shelf Productions</option>
-          <option value="viz-media-llc">VIZ Media LLC</option>
+          <option value="BOOM! Box">BOOM! Box</option>
+          <option value="DC Comics">DC Comics</option>
+          <option value="Harry N. Abrams">Harry N. Abrams</option>
+          <option value="Icon Books">Icon Books</option>
+          <option value="Image Comics">Image Comics</option>
+          <option value="Marvel">Marvel</option>
+          <option value="Simon & Schuster">Simon & Schuster</option>
+          <option value="Top Shelf Productions">Top Shelf Productions</option>
+          <option value="VIZ Media LLC">VIZ Media LLC</option>
         </select>
         <br />
         <label htmlFor="genre">Genre:</label>
