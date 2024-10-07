@@ -9,9 +9,18 @@ const Admin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/books")
+    fetch("http://localhost:8080/api/books", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
       .then((response) => response.json())
-      .then((result) => setBooks(result.data.books))
+      .then((result) => {
+        console.log(result);
+        setBooks(result.data.books);
+      })
       .catch((error) => console.log("error :>> ", error));
   }, []);
 
@@ -26,7 +35,10 @@ const Admin = () => {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then((result) => console.log("result :>> ", result))
+      .then((result) => {
+        console.log("result :>> ", result);
+        window.location.reload();
+      })
       .catch((error) => console.log("error :>> ", error));
   };
 
@@ -34,7 +46,9 @@ const Admin = () => {
     <div className="container-content">
       <h1>ADMIN PAGE</h1>
       <div className="button-container-center">
-        <button className="button-yellow">ADD NEW COMIC</button>
+        <button className="button-yellow" onClick={() => navigate("/create")}>
+          ADD NEW COMIC
+        </button>
       </div>
       <br /> <br />
       <table className="table-container">

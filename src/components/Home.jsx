@@ -6,7 +6,13 @@ const Home = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/books")
+    fetch("http://localhost:8080/api/books", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((result) => setBooks(result.data.books))
       .catch((error) => console.log("error :>> ", error));

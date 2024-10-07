@@ -19,6 +19,7 @@ const Login = ({ setUser }) => {
       headers: {
         "Content-type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(body),
     })
       .then((response) => response.json())

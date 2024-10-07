@@ -5,7 +5,13 @@ const Header = ({ user, setUser }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    fetch(`http://localhost:8080/auth/logout`)
+    fetch(`http://localhost:8080/auth/logout`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((result) => {
         console.log("result :>> ", result);
@@ -59,6 +65,5 @@ Header.propTypes = {
   user: PropTypes.object.isRequired,
   setUser: PropTypes.func.isRequired,
 };
-
 
 export default Header;
