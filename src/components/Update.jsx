@@ -12,8 +12,7 @@ const Update = () => {
       .then((response) => response.json())
       .then((result) => {
         console.log("result :>> ", result);
-        setBook(result.data);
-        navigate("/admin");
+        setBook(result.data.book);
       })
       .catch((error) => console.log("error :>> ", error));
   }, [bookId, navigate]);
@@ -43,6 +42,8 @@ const Update = () => {
       .catch((error) => console.log("error :>> ", error));
   };
 
+  console.log('book.publisher :>> ', book.publisher);
+
   return (
     <div className="form-container">
       <h1>UPDATE PAGE</h1>
@@ -69,18 +70,21 @@ const Update = () => {
         <select
           id="publisher"
           name="publisher"
-          defaultValue={book.publisher}
+          defaultValue={book.publisher || "default"}
           required
         >
-          <option value="boom-box">BOOM! Box</option>
-          <option value="dc-comics">DC Comics</option>
-          <option value="harry-n-abrams">Harry N. Abrams</option>
-          <option value="icon-books">Icon Books</option>
-          <option value="image-comics">Image Comics</option>
-          <option value="marvel">Marvel</option>
-          <option value="simon-schuster">Simon & Schuster</option>
-          <option value="top-shelf-productions">Top Shelf Productions</option>
-          <option value="viz-media-llc">VIZ Media LLC</option>
+          <option value="default" disabled>
+            Select
+          </option>
+          <option value="BOOM! Box">BOOM! Box</option>
+          <option value="DC Comics">DC Comics</option>
+          <option value="Harry N. Abrams">Harry N. Abrams</option>
+          <option value="Icon Books">Icon Books</option>
+          <option value="Image Comics">Image Comics</option>
+          <option value="Marvel">Marvel</option>
+          <option value="Simon & Schuster">Simon & Schuster</option>
+          <option value="Top Shelf Productions">Top Shelf Productions</option>
+          <option value="VIZ Media LLC">VIZ Media LLC</option>
         </select>
         <br />
         <label htmlFor="genre">Genre:</label>

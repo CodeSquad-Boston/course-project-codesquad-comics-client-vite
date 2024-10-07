@@ -11,7 +11,7 @@ const Admin = () => {
   useEffect(() => {
     fetch("http://localhost:8080/api/books")
       .then((response) => response.json())
-      .then((result) => setBooks(result.data))
+      .then((result) => setBooks(result.data.books))
       .catch((error) => console.log("error :>> ", error));
   }, []);
 

@@ -17,15 +17,15 @@ const Signup = ({ setUser }) => {
 
     console.log("body :>> ", JSON.stringify(body));
 
-    fetch(`http://localhost:8080/signup`, {
+    fetch(`http://localhost:8080/auth/signup`, {
       method: "POST",
       body: JSON.stringify(body),
     })
       .then((response) => response.json())
       .then((result) => {
         console.log("result :>> ", result);
-        localStorage.setItem("user", JSON.stringify(result.data));
-        setUser(result.data);
+        localStorage.setItem("user", JSON.stringify(result.data.user));
+        setUser(result.data.user);
         navigate("/admin");
       })
       .catch();

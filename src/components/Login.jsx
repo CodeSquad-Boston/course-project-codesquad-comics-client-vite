@@ -12,15 +12,17 @@ const Login = ({ setUser }) => {
       password: e.target.password.value,
     };
 
-    fetch(`http://localhost:8080/login/local`, {
+    console.log('body :>> ', body);
+
+    fetch(`http://localhost:8080/auth/login/local`, {
       method: "POST",
       body: JSON.stringify(body),
     })
       .then((response) => response.json())
       .then((result) => {
         console.log("result :>> ", result);
-        localStorage.setItem("user", JSON.stringify(result.data));
-        setUser(result.data);
+        localStorage.setItem("user", JSON.stringify(result.data.user));
+        setUser(result.data.user);
         navigate("/admin");
       })
       .catch((error) => console.log("error :>> ", error));
