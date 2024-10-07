@@ -16,6 +16,12 @@ const Admin = () => {
   }, []);
 
   const handleDeleteBook = (bookId) => {
+    const confirm = window.confirm("Delete item?");
+
+    if (!confirm) {
+      return;
+    }
+
     fetch(`http://localhost:8080/api/books/delete/${bookId}`, {
       method: "DELETE",
     })
