@@ -48,7 +48,7 @@ const Footer = () => {
         >
           <img
             className="footer-logo"
-            src="/images/CodeSquad-logo.png"
+            src="/images/CodeSquad-logo.jpg"
             alt="CodeSquad logo"
           />
         </a>

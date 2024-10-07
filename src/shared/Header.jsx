@@ -23,7 +23,7 @@ const Header = ({ user, setUser }) => {
       <Link to="/" className="nav-logo-container">
         <img
           className="nav-logo"
-          src="/images/CodeSquad-Comics-logo.png"
+          src="/images/CodeSquad-Comics-logo.jpg"
           alt="CodeSquad Comics logo"
         />
       </Link>
