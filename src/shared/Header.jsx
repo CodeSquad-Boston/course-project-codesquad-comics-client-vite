@@ -5,7 +5,7 @@ const Header = ({ user, setUser }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    fetch(`http://localhost:8080/logout`)
+    fetch(`http://localhost:8080/auth/logout`)
       .then((response) => response.json())
       .then((result) => {
         console.log("result :>> ", result);
