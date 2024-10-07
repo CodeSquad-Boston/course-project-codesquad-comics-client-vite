@@ -12,18 +12,18 @@ import Signup from "./components/Signup";
 import Update from "./components/Update";
 
 import "./App.css";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || {});
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || {}
+  );
 
   return (
     <div className="App">
       <Header user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/create" element={<Create />} />
         <Route
           path="/login"
           element={<Login user={user} setUser={setUser} />}
@@ -32,7 +32,12 @@ function App() {
           path="/signup"
           element={<Signup user={user} setUser={setUser} />}
         />
-        <Route path="/books/:bookId/update" element={<Update />} />
+        <Route path="/about" element={<About />} />
+        <Route element={<PrivateRoutes user={user} />}>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/books/:bookId/update" element={<Update />} />
+        </Route>
       </Routes>
       <Footer />
     </div>
