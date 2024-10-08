@@ -139,7 +139,7 @@ const Update = () => {
               id="synopsis"
               defaultValue={book.synopsis}
               required
-            ></textarea>
+            />
             <br />
             <div className="button-container-center">
               <button

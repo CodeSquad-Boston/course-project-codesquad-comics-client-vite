@@ -111,7 +111,7 @@ const Create = () => {
           id="synopsis"
           placeholder="Synopsis"
           required
-        ></textarea>
+        />
         <br />
         <div className="button-container-center">
           <button type="submit" className="button-yellow" disabled={isLoading}>

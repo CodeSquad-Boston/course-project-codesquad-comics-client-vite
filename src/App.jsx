@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./shared/Header";
-import Footer from "./shared/Footer";
 import Home from "./components/Home";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import About from "./components/About";
 import Admin from "./components/Admin";
 import Create from "./components/Create";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
 import Update from "./components/Update";
+import Footer from "./shared/Footer";
 
 import "./App.css";
 import PrivateRoutes from "./components/PrivateRoutes";
