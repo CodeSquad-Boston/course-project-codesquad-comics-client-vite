@@ -56,7 +56,11 @@ const Signup = () => {
             required
           />
         </div>
-        <button type="submit">Sign up</button>
+        <div>
+          <button type="submit" className="button-yellow">
+            Sign up
+          </button>
+        </div>
       </form>
     </React.Fragment>
   );

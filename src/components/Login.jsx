@@ -22,7 +22,9 @@ const Login = () => {
         />
         <br />
         <div className="button-container-center">
-          <input className="button-yellow" type="submit" />
+          <button type="submit" className="button-yellow">
+            Login
+          </button>
         </div>
       </form>
     </div>
