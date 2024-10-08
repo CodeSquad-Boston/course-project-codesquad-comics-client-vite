@@ -31,6 +31,7 @@ const Header = ({ user, setUser }) => {
           className="nav-logo"
           src="/images/CodeSquad-Comics-logo.jpg"
           alt="CodeSquad Comics logo"
+          loading="lazy"
         />
       </Link>
       <ul className="navbar" id="nav-menu">

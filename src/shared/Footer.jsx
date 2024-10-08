@@ -50,6 +50,7 @@ const Footer = () => {
             className="footer-logo"
             src="/images/CodeSquad-logo.jpg"
             alt="CodeSquad logo"
+            loading="lazy"
           />
         </a>
       </div>

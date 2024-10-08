@@ -19,7 +19,7 @@ const Home = () => {
       .then((result) => setBooks(result.data.books))
       .catch((error) => setError(error.message))
       .finally(() => setIsLoading(false));
-  }, [setIsLoading]);
+  }, []);
 
   return (
     <div>
@@ -58,6 +58,7 @@ const Home = () => {
                         className="image-cover-index"
                         src={`images/${book.image}`}
                         alt={`${book.title} cover`}
+                        loading="lazy"
                       />
                     </a>
                     <p>{book.title}</p>
