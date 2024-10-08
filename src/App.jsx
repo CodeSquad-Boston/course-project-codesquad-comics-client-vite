@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./shared/Header";
@@ -15,9 +15,14 @@ import "./App.css";
 import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || {}
-  );
+  const [user, setUser] = useState({});
+
+  // Accessing localStorage directly in the render function causes re-renders every time App re-renders.
+  // Use a useEffect to set user only once when the component mounts.
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+    setUser(storedUser);
+  }, []);
 
   return (
     <div className="App">
