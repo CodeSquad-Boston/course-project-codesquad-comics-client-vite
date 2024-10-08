@@ -29,7 +29,6 @@ const Signup = ({ setUser }) => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log("result :>> ", result);
         localStorage.setItem("user", JSON.stringify(result.data.user));
         setUser(result.data.user);
         navigate("/admin");

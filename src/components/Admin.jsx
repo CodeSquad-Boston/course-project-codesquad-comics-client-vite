@@ -20,7 +20,6 @@ const Admin = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setBooks(result.data.books);
       })
       .catch((error) => setError(error.message))

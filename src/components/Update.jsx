@@ -14,7 +14,6 @@ const Update = () => {
     fetch(`http://localhost:8080/api/books/${bookId}`)
       .then((response) => response.json())
       .then((result) => {
-        console.log("result :>> ", result);
         setBook(result.data.book);
       })
       .catch((error) => setError(error.message))
@@ -48,8 +47,6 @@ const Update = () => {
       .catch((error) => console.log("error :>> ", error))
       .finally(() => setIsLoading(false));
   };
-
-  console.log("book.publisher :>> ", book.publisher);
 
   return (
     <div className="form-container">

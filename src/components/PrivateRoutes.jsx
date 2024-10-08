@@ -2,7 +2,6 @@ import { Navigate, Outlet } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function PrivateRoutes({ user }) {
-  console.log("user :>> ", user);
   if (!user.username) {
     return <Navigate to="/login" replace />;
   }
