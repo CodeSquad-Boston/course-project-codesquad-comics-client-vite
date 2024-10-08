@@ -31,21 +31,22 @@ const Home = () => {
           className="container-book-rows-index"
           id="container-book-rows-index"
         >
-          {books.map((book) => (
-            <div key={book._id} className="container-single-book-index">
-              <a href="#">
-                <img
-                  className="image-cover-index"
-                  src={`images/${book.image}`}
-                  alt={`${book.title} cover`}
-                />
-              </a>
-              <p>{book.title}</p>
-              <p>by {book.author}</p>
-              <p>{book.rating} stars</p>
-              <a href="#">Details</a>
-            </div>
-          ))}
+          {books.length !== 0 &&
+            books.map((book) => (
+              <div key={book._id} className="container-single-book-index">
+                <a href="#">
+                  <img
+                    className="image-cover-index"
+                    src={`images/${book.image}`}
+                    alt={`${book.title} cover`}
+                  />
+                </a>
+                <p>{book.title}</p>
+                <p>by {book.author}</p>
+                <p>{book.rating} stars</p>
+                <a href="#">Details</a>
+              </div>
+            ))}
         </div>
       </div>
     </div>

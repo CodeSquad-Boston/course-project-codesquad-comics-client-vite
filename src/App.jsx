@@ -13,17 +13,19 @@ import Update from "./components/Update";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem("user") || {});
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || {}
+  );
 
   return (
     <div className="App">
       <Header user={user} setUser={setUser} />
       <Home />
+      <Login user={user} setUser={setUser} />
+      <Signup user={user} setUser={setUser} />
       <About />
       <Admin />
       <Create />
-      <Login user={user} setUser={setUser} />
-      <Signup user={user} setUser={setUser} />
       <Update />
       <Footer />
     </div>

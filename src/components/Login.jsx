@@ -31,7 +31,9 @@ const Login = () => {
         />
         <br />
         <div className="button-container-center">
-          <input type="submit" className="button-yellow" />
+          <button type="submit" className="button-yellow">
+            Login
+          </button>
         </div>
       </form>
     </div>
