@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
@@ -38,58 +38,64 @@ const Signup = ({ setUser }) => {
   };
 
   return (
-    <React.Fragment>
-      <h1>SIGNUP PAGE</h1>
-      <form onSubmit={handleSignupFormSubmit}>
-        <div>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            placeholder="John"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            placeholder="Wick"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="johnwick"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter a strong password"
-            required
-          />
-        </div>
-        <div>
-          <button type="submit" className="button-yellow" disabled={isLoading}>
-            {isLoading ? "Signing up..." : "Signup"}
-          </button>
-        </div>
+    <main>
+      <div className="form-container">
+        <h1>SIGNUP PAGE</h1>
+        <form onSubmit={handleSignupFormSubmit}>
+          <div>
+            <label htmlFor="firstName">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              placeholder="John"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              placeholder="Wick"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="johnwick"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter a strong password"
+              required
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="button-yellow"
+              disabled={isLoading}
+            >
+              {isLoading ? "Signing up..." : "Signup"}
+            </button>
+          </div>
 
-        {error && <p>There is an error: {error}</p>}
-      </form>
-    </React.Fragment>
+          {error && <p>There is an error: {error}</p>}
+        </form>
+      </div>
+    </main>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // import booksData from "../data/books";
 
@@ -45,62 +45,66 @@ const Admin = () => {
   };
 
   return (
-    <div className="container-content">
-      <h1>ADMIN PAGE</h1>
+    <main>
+      <div className="container-content">
+        <h1>ADMIN PAGE</h1>
 
-      {isLoading && <p>Loading...</p>}
+        {isLoading && <p>Loading...</p>}
 
-      {error && <p>There is an error: {error}</p>}
+        {error && <p>There is an error: {error}</p>}
 
-      {!isLoading && !error && (
-        <>
-          <div className="button-container-center">
-            <button
-              className="button-yellow"
-              onClick={() => navigate("/create")}
-            >
-              ADD NEW COMIC
-            </button>
-          </div>
-          <br /> <br />
-          <table className="table-container">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Rating</th>
-                <th colSpan="2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {books.map((book) => (
-                <tr key={book._id}>
-                  <td>{book.title}</td>
-                  <td>{book.author}</td>
-                  <td>{book.rating}</td>
-                  <td>
-                    <button
-                      className="button-blue"
-                      onClick={() => navigate(`/books/${book._id}/update`)}
-                    >
-                      UPDATE
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="button-yellow"
-                      onClick={() => handleDeleteBook(book._id)}
-                    >
-                      DELETE
-                    </button>
-                  </td>
+        {!isLoading && !error && (
+          <>
+            <div className="button-container-center">
+              <button
+                className="button-add"
+                onClick={() => navigate("/create")}
+              >
+                ADD NEW COMIC
+              </button>
+            </div>
+            <br /> <br />
+            <table className="table-container">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Rating</th>
+                  <th colSpan="2">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
-    </div>
+              </thead>
+              <tbody>
+                {books.map((book) => (
+                  <tr key={book._id}>
+                    <td>
+                      <Link to={`/books/${book._id}`}>{book.title}</Link>
+                    </td>
+                    <td>{book.author}</td>
+                    <td>{book.rating}</td>
+                    <td>
+                      <button
+                        className="button-blue"
+                        onClick={() => navigate(`/books/${book._id}/update`)}
+                      >
+                        UPDATE
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        className="button-red"
+                        onClick={() => handleDeleteBook(book._id)}
+                      >
+                        DELETE
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
+      </div>
+    </main>
   );
 };
 
