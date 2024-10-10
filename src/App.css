@@ -1,9 +1,146 @@
-#root {
-  max-width: 1280px;
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
-.image-cover-index,
-.nav-logo,
+.image-cover-index {
+  width: 200px;
+  height: 280px;
+}
+
 .footer-logo {
   width: 200px;
+}
+
+.nav-logo {
+  width: 200px;
+}
+
+.container-content,
+.form-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 12px auto;
+  padding: 12px;
+  border: 3px black solid;
+  background-color: #ffffff;
+}
+
+.container-book-rows-index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container-single-book-index {
+  flex: 1;
+  text-align: center;
+  margin: 0 12px;
+  padding: 6px 0 12px;
+}
+
+.footer-container-font-awesome {
+  display: flex;
+}
+
+.button-red,
+.button-blue,
+.button-add {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 12px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.button-red {
+  background-color: #d9534f;
+  color: #ffffff;
+}
+
+.button-blue {
+  background-color: #063c5e;
+  color: #ffffff;
+}
+
+.book-details {
+  width: 90%;
+  margin: 24px auto;
+  background-color: #063c5e;
+  border: 5px #fccf14 solid;
+  border-radius: 50px;
+}
+
+.book-details h1 {
+  color: #fccf14;
+  text-transform: uppercase;
+}
+
+.book-details img {
+  width: 280px;
+  border: 1px #ffffff solid;
+  border-radius: 20px;
+  margin: 6px 0 36px;
+}
+
+.book-details-upper {
+  text-align: center;
+}
+
+.book-details-lower {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 0 0 44px 44px;
+  border-top: 5px #fccf14 solid;
+}
+
+@media screen and (min-width: 640px) {
+  .container-content,
+  .form-container {
+    width: 80%;
+  }
+
+  .book-details {
+    width: 80%;
+  }
+
+  .footer-container-font-awesome {
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    width: 320px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container-content,
+  .form-container {
+    width: 70%;
+  }
+
+  .book-details {
+    width: 70%;
+  }
+
+  .nav-logo {
+    width: 360px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container-content,
+  .form-container {
+    width: 60%;
+  }
+
+  .book-details {
+    width: 60%;
+  }
+
+  .nav-logo {
+    width: 400px;
+  }
 }

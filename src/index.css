@@ -1,6 +1,134 @@
+/* 
+Teal: #006B6B 
+Light Teal: #009E9E
+Yellow: #FCCF14
+Blue: #063C5E
+Grey: #C2C2C2
+White: #FFFFFF 
+*/
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 36px auto;
+  background: linear-gradient(#ffffff, #009e9e, #006b6b);
+}
+
+table {
+  width: 100%;
+}
+
+tr th:not(:last-child) {
+  text-align: left;
+}
+
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #063c5e;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  width: 540px;
+}
+
+nav ul li {
+  margin: 0 36px;
+}
+
+nav ul li a {
+  color: #ffffff;
+}
+
+footer {
+  display: flex;
+  padding: 0 48px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #063c5e;
+  border-top: 5px #fccf14 solid;
+  color: #ffffff;
+}
+
+footer a {
+  color: #ffffff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 50%;
+}
+
+form button {
+  margin: 16px 0;
+}
+
+form label {
+  align-content: center;
+  flex: 1;
+}
+
+form input,
+form select,
+form textarea {
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 12px;
+  flex: 2;
+}
+
+form div {
+  display: flex;
+  margin: 6px 0;
+}
+
+form button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 12px;
+  width: 100%;
+  font-size: 1em;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+@media screen and (min-width: 640px) {
+  footer {
+    flex-direction: row;
+    
+  }
+}
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 1024px) {
 }
