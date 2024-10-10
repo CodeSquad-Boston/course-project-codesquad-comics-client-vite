@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // import booksData from "../data/books";
 
@@ -75,7 +75,9 @@ const Admin = () => {
             <tbody>
               {books.map((book) => (
                 <tr key={book._id}>
-                  <td>{book.title}</td>
+                  <td>
+                    <Link to={`/books/${book._id}`}>{book.title}</Link>
+                  </td>
                   <td>{book.author}</td>
                   <td>{book.rating}</td>
                   <td>
