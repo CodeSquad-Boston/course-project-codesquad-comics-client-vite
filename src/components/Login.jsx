@@ -37,36 +37,44 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div className="form-container">
-      <h1>LOGIN PAGE</h1>
-      <form onSubmit={handleLoginFormSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="johnwick"
-          required
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-        />
-        <br />
-        <div className="button-container-center">
-          <button type="submit" className="button-yellow" disabled={isLoading}>
-            {isLoading ? "Logging in..." : "Login"}
-          </button>
-        </div>
+    <main>
+      <div className="form-container">
+        <h1>LOGIN PAGE</h1>
+        <form onSubmit={handleLoginFormSubmit}>
+          <div>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="johnwick"
+            required
+          />
+          </div>
+          <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+          </div>
+          <div className="button-container-center">
+            <button
+              type="submit"
+              className="button-yellow"
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in..." : "Login"}
+            </button>
+          </div>
 
-        {error && <p>There is an error: {error}</p>}
-      </form>
-    </div>
+          {error && <p>There is an error: {error}</p>}
+        </form>
+      </div>
+    </main>
   );
 };
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // import booksData from "../data/books";
 
@@ -22,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <div className="container-content">
         <h1>CODESQUAD COMICS</h1>
         <p>
@@ -53,25 +54,25 @@ const Home = () => {
               {books.length &&
                 books.map((book) => (
                   <div key={book._id} className="container-single-book-index">
-                    <a href="#">
+                    <Link to={`/books/${book._id}`}>
                       <img
                         className="image-cover-index"
                         src={`images/${book.image}`}
                         alt={`${book.title} cover`}
                         loading="lazy"
                       />
-                    </a>
+                    </Link>
                     <p>{book.title}</p>
                     <p>by {book.author}</p>
                     <p>{book.rating} stars</p>
-                    <a href="#">Details</a>
+                    <Link to={`/books/${book._id}`}>Details</Link>
                   </div>
                 ))}
             </div>
           </>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

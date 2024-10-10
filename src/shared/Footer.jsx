@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="footer-container">
@@ -15,13 +17,13 @@ const Footer = () => {
         <h3>LINKS</h3>
         <ul className="navbar" id="nav-menu">
           <li>
-            <a href="#">HOME</a>
+            <Link to="/">HOME</Link>
           </li>
           <li>
-            <a href="#">ABOUT</a>
+            <Link to="/about">ABOUT</Link>
           </li>
           <li>
-            <a href="#">LOGIN</a>
+            <Link to="/login">LOGIN</Link>
           </li>
         </ul>
       </div>
