@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 // import booksData from "../data/books";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Admin = () => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +13,7 @@ const Admin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/books", {
+    fetch(`${API_BASE_URL}/api/books`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -33,7 +35,7 @@ const Admin = () => {
       return;
     }
 
-    fetch(`http://localhost:8080/api/books/delete/${bookId}`, {
+    fetch(`${API_BASE_URL}/api/books/delete/${bookId}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

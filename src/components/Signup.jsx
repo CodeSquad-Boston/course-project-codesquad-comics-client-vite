@@ -2,6 +2,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Signup = ({ setUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,7 +22,7 @@ const Signup = ({ setUser }) => {
 
     setIsLoading(true);
 
-    fetch(`http://localhost:8080/auth/signup`, {
+    fetch(`${API_BASE_URL}/auth/signup`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

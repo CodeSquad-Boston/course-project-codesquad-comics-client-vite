@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Book() {
   const [book, setBook] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +13,7 @@ function Book() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/books/${bookId}`)
+    fetch(`${API_BASE_URL}/api/books/${bookId}`)
       .then((response) => response.json())
       .then((result) => {
         setBook(result.data.book);
@@ -27,7 +29,7 @@ function Book() {
       return;
     }
 
-    fetch(`http://localhost:8080/api/books/delete/${bookId}`, {
+    fetch(`${API_BASE_URL}/api/books/delete/${bookId}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

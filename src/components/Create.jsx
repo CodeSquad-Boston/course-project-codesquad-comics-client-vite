@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Create = () => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +23,7 @@ const Create = () => {
 
     setIsLoading(true);
 
-    fetch(`http://localhost:8080/api/books/create`, {
+    fetch(`${API_BASE_URL}/api/books/create`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

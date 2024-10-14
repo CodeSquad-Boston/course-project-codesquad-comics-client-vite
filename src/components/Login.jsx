@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Login = ({ setUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -18,7 +20,7 @@ const Login = ({ setUser }) => {
 
     setIsLoading(true);
 
-    fetch(`http://localhost:8080/auth/login/local`, {
+    fetch(`${API_BASE_URL}/auth/login/local`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

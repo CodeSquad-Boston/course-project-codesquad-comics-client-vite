@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 // import booksData from "../data/books";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/books", {
+    fetch(`${API_BASE_URL}/api/books`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",

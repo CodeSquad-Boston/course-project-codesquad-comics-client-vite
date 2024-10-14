@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Update = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -11,7 +13,7 @@ const Update = () => {
   const [book, setBook] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/books/${bookId}`)
+    fetch(`${API_BASE_URL}/api/books/${bookId}`)
       .then((response) => response.json())
       .then((result) => {
         setBook(result.data.book);
@@ -35,7 +37,7 @@ const Update = () => {
 
     setIsLoading(true);
 
-    fetch(`http://localhost:8080/api/books/update/${bookId}`, {
+    fetch(`${API_BASE_URL}/api/books/update/${bookId}`, {
       method: "PUT",
       body: JSON.stringify(body),
     })

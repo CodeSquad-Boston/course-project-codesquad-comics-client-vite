@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 import { useNavigate, Link } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Header = ({ user, setUser }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    fetch(`http://localhost:8080/auth/logout`, {
+    fetch(`${API_BASE_URL}/auth/logout`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
