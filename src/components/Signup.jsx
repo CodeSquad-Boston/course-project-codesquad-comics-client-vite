@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -38,6 +38,8 @@ const Signup = ({ setUser }) => {
       .catch((error) => setError(error.message))
       .finally(() => setIsLoading(false));
   };
+
+  const redirectNote = `Already have an account?`;
 
   return (
     <main>
@@ -96,6 +98,9 @@ const Signup = ({ setUser }) => {
 
           {error && <p>There is an error: {error}</p>}
         </form>
+        <p className="redirect-text">
+          {redirectNote} <Link to="/login">Login</Link>
+        </p>
       </div>
     </main>
   );
